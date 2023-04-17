@@ -163,15 +163,20 @@ while true {
     }
 }
 
+
+
+struct SubjectAndGrade {
+    var subject: String
+    var grade: String?
+}
+
 struct Student {
     let name: String
-    var subject: String?
-    var grade: String?
+    var subGradeList: [SubjectAndGrade]?
     
-    init(name: String, subject: String? = nil, grade: String? = nil) {
+    init(name: String, subGradeList: [SubjectAndGrade]? = nil) {
         self.name = name
-        self.subject = subject
-        self.grade = grade
+        self.subGradeList = subGradeList
     }
 }
 
@@ -226,20 +231,107 @@ class MyCreditManager {
     }
     
     func removeStudent() {
-        
+        print("삭제할 학생의 이름을 입력해주세요")
+        if let name = readLine()?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            if !name.isEnglish {
+                print("뭔가 잘못 입력하셨습니다. 다시 시작하세요")
+                return
+            }
+            
+            if let index = allStudents.firstIndex(where: { $0.name == name }) {
+                allStudents.remove(at: index)
+                print("\(name) 학생을 삭제하였습니다.")
+                return
+            } else {
+                print("\(name) 학생을 찾지 못했습니다.")
+                return
+            }
+        }
     }
     
     func addGrade() {
-        
+        print("성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.")
+        print("입력예) Mickey Swift A+")
+        print("만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.")
+        if let input = readLine()?.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ") {
+            if input.count != 3 {
+                print("입력이 잘못되었습니다. 다시 확인해주세요.")
+                return
+            }
+            
+            let name = input[0]
+            let subject = input[1]
+            let grade = input[2]
+            
+            if !allStudents.contains(where: { $0.name == name }) {
+                print("\(name) 학생을 찾지 못했습니다.")
+                return
+            }
+            
+            if let index = allStudents.firstIndex(where: { $0.name == name }) {
+                let newSubGrade = SubjectAndGrade(subject: subject, grade: grade)
+                allStudents[index].subGradeList?.append(newSubGrade)
+                print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
+                return
+            }
+        }
     }
     
     func removeGrade() {
-        
+        print("성적을 삭제할 학생의 이름, 과목이름을 띄어쓰기로 구분하여 차례로 작성해주세요.")
+        print("입력예) Mickey Swift")
+        if let input = readLine()?.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: " ") {
+            if input.count != 2 {
+                print("입력이 잘못되었습니다. 다시 확인해주세요.")
+                return
+            }
+            
+            let name = input[0]
+            let subject = input[1]
+            
+            if !allStudents.contains(where: { $0.name == name }) {
+                print("\(name) 학생을 찾지 못했습니다.")
+                return
+            }
+            
+            if let index = allStudents.firstIndex(where: { $0.name == name }) {
+                if let subIndex = allStudents[index].subGradeList?.firstIndex(where: { $0.subject == subject}) {
+                    allStudents[index].subGradeList?[subIndex].grade = nil
+                }
+                print("\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다.")
+                return
+            }
+        }
     }
     
     func showAverageGrade() {
-        
+        print("평점을 알고싶은 학생의 이름을 입력해주세요.")
+        if let name = readLine()?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            if !name.isEnglish {
+                print("뭔가 잘못 입력하셨습니다. 다시 시작하세요")
+                return
+            }
+            
+            if !allStudents.contains(where: { $0.name == name }) {
+                print("\(name) 학생을 찾지 못했습니다.")
+                return
+            }
+            
+            if let index = allStudents.firstIndex(where: { $0.name == name }) {
+                if let subAndGradeList = allStudents[index].subGradeList {
+                    for item in subAndGradeList {
+                        print("\(item.subject): \(item.grade ?? "성적 없음")")
+                        // 평점 작성
+                        print("평점 계산해야함")
+                    }
+                    return
+                }
+            }
+        }
     }
+    
+    
+    
 }
 
 extension String {
