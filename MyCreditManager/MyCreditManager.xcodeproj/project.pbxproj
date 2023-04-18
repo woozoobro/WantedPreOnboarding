@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D3B95A629EEE50D0032691F /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B95A529EEE50D0032691F /* Grade.swift */; };
+		9D3B95A829EEE52D0032691F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B95A729EEE52D0032691F /* Student.swift */; };
+		9D3B95AB29EEE5620032691F /* String+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B95AA29EEE5620032691F /* String+Double.swift */; };
+		9D3B95AD29EEE5DA0032691F /* MyCreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B95AC29EEE5DA0032691F /* MyCreditManager.swift */; };
 		9DA03C4B29ED637400ED6BF8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA03C4A29ED637400ED6BF8 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9D3B95A529EEE50D0032691F /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		9D3B95A729EEE52D0032691F /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		9D3B95AA29EEE5620032691F /* String+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Double.swift"; sourceTree = "<group>"; };
+		9D3B95AC29EEE5DA0032691F /* MyCreditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCreditManager.swift; sourceTree = "<group>"; };
 		9DA03C4729ED637400ED6BF8 /* MyCreditManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MyCreditManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DA03C4A29ED637400ED6BF8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,6 +46,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D3B95A429EEE4F90032691F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9D3B95A529EEE50D0032691F /* Grade.swift */,
+				9D3B95A729EEE52D0032691F /* Student.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9D3B95A929EEE5500032691F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9D3B95AA29EEE5620032691F /* String+Double.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9DA03C3E29ED637400ED6BF8 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				9DA03C4A29ED637400ED6BF8 /* main.swift */,
+				9D3B95AC29EEE5DA0032691F /* MyCreditManager.swift */,
+				9D3B95A929EEE5500032691F /* Extensions */,
+				9D3B95A429EEE4F90032691F /* Model */,
 			);
 			path = MyCreditManager;
 			sourceTree = "<group>";
@@ -121,6 +149,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DA03C4B29ED637400ED6BF8 /* main.swift in Sources */,
+				9D3B95A829EEE52D0032691F /* Student.swift in Sources */,
+				9D3B95A629EEE50D0032691F /* Grade.swift in Sources */,
+				9D3B95AB29EEE5620032691F /* String+Double.swift in Sources */,
+				9D3B95AD29EEE5DA0032691F /* MyCreditManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
